@@ -51,6 +51,12 @@ No ocurre así con el enlace blando del directorio **pruebas-2**, pues guarda la
 
 ![nuevo archivo nano](https://user-images.githubusercontent.com/92091175/138286753-908b9d64-2bfe-4460-83a0-db87f0f79636.png)
 
+
+3. Si se edita el fichero original, por ejemplo, con el editor `nano`, al consultar el enlace duro del directorio **pruebas-1** y ejecutar `nano`, podemos comprobar que aparece con la misma modificación:
+
+![modificacion origen enlace duro](https://user-images.githubusercontent.com/92091175/138308707-8bce6b58-ebbb-44e0-874a-434e3ef7b3e0.png)
+
+
 4. Al copiar el enlace duro con la orden `cp Drosophila_melanogaster.BDGP6.28.102.gtf Drosophila.copia.enlace.duro.gtf` y ejecutar `ls` nos aparece que la copia que hemos hecho tiene un inodo distinto a la original:
 
 ![Copia enlace duro](https://user-images.githubusercontent.com/92091175/138264052-b989af1f-3412-4e45-b533-c9675e463e87.png)
