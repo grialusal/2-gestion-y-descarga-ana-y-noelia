@@ -17,17 +17,30 @@ Crea una copia de la carpeta gtfs. Luego crea enlaces duros y blandos a los fich
 3. ¿Qué ocurre con la otra parte cuando se edita el destino o el origen del enlace?
 4. ¿Qué ocurre cuando copiamos un enlace?
 
+
+### Respuesta ejercicio 1
+
 En primer lugar, para crear una copia de la carpeta gtfs nos situamos en nuestro repositorio y ejecutamos la orden `cp -r gtfs gtfscopy`. Comprobamos con `ls` que nuestra copia se ha creado:
 
 ![copy gtfs](https://user-images.githubusercontent.com/92091175/138259066-6afac656-4a67-43a8-9d52-7d40750aeb08.png)
 
 A continuación, con la orden `mkdir` creamos dos directorios prueba en los que ubicaremos nuestros enlaces duros y blandos. 
+En el directorio **pruebas-1** crearemos un enlace duro con la orden `ln`:
+
+`ln gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf pruebas-1/`
+
+Con el comando `-i` podemos ver que se ha creado, y que el número de inodos ha subido a 2.
+
+Ahora creamos un enlace blando en el directorio **pruebas-2**, con la orden `ln -s`:
+
+`ln -s gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf pruebas-2/`
+
+Ejecutamos `ls -li` para comprobar que se ha creado correctamente y que el inodo es distinto del fichero original al que nos redirige.
 
 ![enlaces](https://user-images.githubusercontent.com/92091175/138259422-39cf14bb-1b13-4d35-bb3f-8beb71b11b97.png)
 
 
 
-### Respuesta ejercicio 1
 
 ## Ejercicio 2
 Usa la documentación de `find` para encontrar todos los notebook Jupyter con fecha de última modificación 30 de Noviembre de 2020 que haya en tu directorio HOME. Excluye todos aquellos que se encuentren dentro de directorios ocultos (aquellos que comienzan por un punto `.`). 
