@@ -40,6 +40,14 @@ Ejecutamos `ls -li` para comprobar que se ha creado correctamente y que el inodo
 ![enlaces](https://user-images.githubusercontent.com/92091175/138259422-39cf14bb-1b13-4d35-bb3f-8beb71b11b97.png)
 
 
+4. Al copiar el enlace duro con la orden `cp Drosophila_melanogaster.BDGP6.28.102.gtf Drosophila.copia.enlace.duro.gtf` y ejecutar `ls` nos aparece que la copia que hemos hecho tiene un inodo distinto a la original:
+
+![Copia enlace duro](https://user-images.githubusercontent.com/92091175/138264052-b989af1f-3412-4e45-b533-c9675e463e87.png)
+
+Sin embargo, al intentar llevar a cabo la misma acción con nuestro enlace blando, nos aparece un error:
+
+![error copia enlace blando](https://user-images.githubusercontent.com/92091175/138264633-8cf163f2-5e49-4076-a73b-2b80e9252f17.png)
+
 
 
 ## Ejercicio 2
