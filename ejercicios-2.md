@@ -17,6 +17,16 @@ Crea una copia de la carpeta gtfs. Luego crea enlaces duros y blandos a los fich
 3. ¿Qué ocurre con la otra parte cuando se edita el destino o el origen del enlace?
 4. ¿Qué ocurre cuando copiamos un enlace?
 
+En primer lugar, para crear una copia de la carpeta gtfs nos situamos en nuestro repositorio y ejecutamos la orden `cp -r gtfs gtfscopy`. Comprobamos con `ls` que nuestra copia se ha creado:
+
+![copy gtfs](https://user-images.githubusercontent.com/92091175/138259066-6afac656-4a67-43a8-9d52-7d40750aeb08.png)
+
+A continuación, con la orden `mkdir` creamos dos directorios prueba en los que ubicaremos nuestros enlaces duros y blandos. 
+
+![enlaces](https://user-images.githubusercontent.com/92091175/138259422-39cf14bb-1b13-4d35-bb3f-8beb71b11b97.png)
+
+
+
 ### Respuesta ejercicio 1
 
 ## Ejercicio 2
