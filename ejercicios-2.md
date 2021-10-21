@@ -39,6 +39,17 @@ Ejecutamos `ls -li` para comprobar que se ha creado correctamente y que el inodo
 
 ![enlaces](https://user-images.githubusercontent.com/92091175/138259422-39cf14bb-1b13-4d35-bb3f-8beb71b11b97.png)
 
+1. Para borrar el archivo original utilizamos la orden `rm gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf`. A continuación, accedemos a los directorios prueba con los enlaces creados.
+Comprobamos así que, en la carpeta **pruebas-1** donde estaba el enlace duro, este sigue apareciendo. El número de inodos ha cambiado a 1, pero comprobamos con `nano Drosophila_melanogaster.BDGP6.28.102.gtf` que se puede acceder igualmente al archivo.
+
+
+![acceso enlace duro](https://user-images.githubusercontent.com/92091175/138285851-fe69cb81-4993-49b7-99b3-d749e6d7402e.png)
+
+No ocurre así con el enlace blando del directorio **pruebas-2**, pues guarda la dirección original, a la cual no se puede acceder, y si se comprueba con `nano`, genera un archivo vacío.
+
+![direccion enlace blando](https://user-images.githubusercontent.com/92091175/138286968-41fc59e7-bd40-405d-a733-0d123683904d.png)
+
+![nuevo archivo nano](https://user-images.githubusercontent.com/92091175/138286753-908b9d64-2bfe-4460-83a0-db87f0f79636.png)
 
 4. Al copiar el enlace duro con la orden `cp Drosophila_melanogaster.BDGP6.28.102.gtf Drosophila.copia.enlace.duro.gtf` y ejecutar `ls` nos aparece que la copia que hemos hecho tiene un inodo distinto a la original:
 
