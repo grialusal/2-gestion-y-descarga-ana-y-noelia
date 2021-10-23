@@ -29,7 +29,9 @@ En el directorio **pruebas-1** crearemos un enlace duro con la orden `ln`:
 
 `ln gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf pruebas-1/`
 
-Con el comando `-i` podemos ver que se ha creado, y que el número de inodos ha subido a 2.
+Con el comando `ls -li` podemos ver que se ha creado el enlace y que el inodo es el mismo que el fichero original. Además, se puede apreciar cómo el número que se encuentra después de los permisos ha cambiado a 2.
+![enlace duro](https://user-images.githubusercontent.com/92113066/138568836-1fbcbdba-83ef-4384-9141-be8338c1aede.png)
+
 
 Ahora creamos un enlace blando en el directorio **pruebas-2**, con la orden `ln -s`:
 
@@ -39,8 +41,8 @@ Ejecutamos `ls -li` para comprobar que se ha creado correctamente y que el inodo
 
 ![enlaces](https://user-images.githubusercontent.com/92091175/138259422-39cf14bb-1b13-4d35-bb3f-8beb71b11b97.png)
 
-1. Para borrar el archivo original utilizamos la orden `rm gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf`. A continuación, accedemos a los directorios prueba con los enlaces creados.
-Comprobamos así que, en la carpeta **pruebas-1** donde estaba el enlace duro, este sigue apareciendo. El número de inodos ha cambiado a 1, pero comprobamos con `nano Drosophila_melanogaster.BDGP6.28.102.gtf` que se puede acceder igualmente al archivo.
+_**1.**_ Para borrar el archivo original utilizamos la orden `rm gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf`. A continuación, accedemos a los directorios prueba con los enlaces creados.
+Comprobamos así que, en la carpeta **pruebas-1** donde estaba el enlace duro, este sigue apareciendo. El inodo no ha cambiado a 1 pero el número que aparece detras de los permisos ya no es 2 sino 1. Comprobamos con `nano Drosophila_melanogaster.BDGP6.28.102.gtf` que se puede acceder igualmente al archivo.
 
 
 ![acceso enlace duro](https://user-images.githubusercontent.com/92091175/138285851-fe69cb81-4993-49b7-99b3-d749e6d7402e.png)
@@ -51,13 +53,26 @@ No ocurre así con el enlace blando del directorio **pruebas-2**, pues guarda la
 
 ![nuevo archivo nano](https://user-images.githubusercontent.com/92091175/138286753-908b9d64-2bfe-4460-83a0-db87f0f79636.png)
 
+_**2.**_ En el caso del enlace duro cuando vamos a la carpeta **gtfscopy** y ejecutamos el comando `ls -li` se observa como el fichero Drosophila_melanogaster.BDGP6.28.102.gtf tiene un numero 2 luego de los permisos. Si eliminamos el fichero de destino del enlace con la orden `rm pruebas-1/Drosophila_melanogaster.BDGP6.28.102.gtf` y ejecutamos el comando `ls -li` podemos ver como ese numero ahora es 1. Ademas al ejecutar `nano` tambien es posible acceder al fichero. 
 
-3. Si se edita el fichero original, por ejemplo, con el editor `nano`, al consultar el enlace duro del directorio **pruebas-1** y ejecutar `nano`, podemos comprobar que aparece con la misma modificación:
+![enlace duro 2](https://user-images.githubusercontent.com/92113066/138570675-374dd682-2b2f-4658-8d59-bc3104c414f3.png)
+
+Cuando eliminamos el fichero de la carpeta **pruebas-2**, donde hemos creado el enlace blando, con la orden `rm pruebas-2/Drosophila_melanogaster.BDGP6.28.102.gtf` vemos que el fichero original se mantiene igual y se puede acceder al fichero con el editor `nano`.
+
+![enlace blando 2](https://user-images.githubusercontent.com/92113066/138570938-9ff2db74-bd9e-4c44-898e-e0f553603455.png)
+
+
+_**3.**_ Si se edita el fichero original, por ejemplo, con el editor `nano`, al consultar el enlace duro del directorio **pruebas-1** y ejecutar `nano`, podemos comprobar que aparece con la misma modificación:
 
 ![modificacion origen enlace duro](https://user-images.githubusercontent.com/92091175/138308707-8bce6b58-ebbb-44e0-874a-434e3ef7b3e0.png)
 
+Sin embargo, al ejecutar `nano` en la carpeta **pruebas-2**, donde hemos creado el enlace blando, se observa vacio.
 
-4. Al copiar el enlace duro con la orden `cp Drosophila_melanogaster.BDGP6.28.102.gtf Drosophila.copia.enlace.duro.gtf` y ejecutar `ls` nos aparece que la copia que hemos hecho tiene un inodo distinto a la original:
+![enlace blando 3](https://user-images.githubusercontent.com/92113066/138571392-525b7110-1b12-4804-9e28-522bfcd100e0.png)
+
+Al modificar el archivo de destino, en caso del enlace duro, tambien se modifica el fichero de origen. 
+
+_**4.**_ Al copiar el enlace duro con la orden `cp Drosophila_melanogaster.BDGP6.28.102.gtf Drosophila.copia.enlace.duro.gtf` y ejecutar `ls` nos aparece que la copia que hemos hecho tiene un inodo distinto a la original:
 
 ![Copia enlace duro](https://user-images.githubusercontent.com/92091175/138264052-b989af1f-3412-4e45-b533-c9675e463e87.png)
 
