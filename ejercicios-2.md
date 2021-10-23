@@ -72,6 +72,10 @@ Usa la documentación de `find` para encontrar todos los notebook Jupyter con fe
 
 ### Respuesta ejercicio 2
 
+Los ficheros de notebook Jupyter tienen la extensión .json, por lo que podemos utilizar esa información como punto de partida para buscar en nuestro directorio los archivos deseados. Para ello, utilizamos la orden `find . -name "*.json"`. Nos devuelve un solo archivo:
+
+![find json](https://user-images.githubusercontent.com/92091175/138553224-476a6df0-5ff1-4420-9e57-75808190fce2.png)
+
 
 ## Ejercicio 3
 Descarga, empleando la orden oportuna, todos los ficheros [de esta URL](ftp://ftp.ensembl.org/pub/release-102/gtf/accipiter_nisus/). 
