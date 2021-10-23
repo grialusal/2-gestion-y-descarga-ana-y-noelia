@@ -76,6 +76,39 @@ Los ficheros de notebook Jupyter tienen la extensión .json, por lo que podemos 
 
 ![find json](https://user-images.githubusercontent.com/92091175/138553224-476a6df0-5ff1-4420-9e57-75808190fce2.png)
 
+Consultamos en `man find` cómo añadir a la orden principal los criterios de búsqueda por fecha de última modificación, así como el criterio de exclusión de directorios ocultos, y encontramos la siguiente entrada:
+```
+       -mtime n
+              File's  data was last modified less than, more than or
+              exactly n*24 hours ago.  See the comments  for  -atime
+              to  understand how rounding affects the interpretation
+              of file modification times.
+```
+
+Tenemos entonces que calcular `n`, esto es, el número de días que han pasado desde el 30 de noviembre de 2020 hasta hoy. 
+
+***Se me ocurren dos formas:
+-La rápida: Buscar en Google 'days since 30 nov 2020'
+-La no-tan-rápida: definiendo variables (procedimiento consultado [aquí](https://www.linuxito.com/gnu-linux/nivel-basico/928-como-restar-fechas-en-bash))***
+
+```
+negido@cpg3:~$ FECHA_FIN=$(date +%s)
+negido@cpg3:~$ FECHA_INICIO=$(date --date="2020-11-30" +%s)
+negido@cpg3:~$ DIAS=$(( ($FECHA_FIN - $FECHA_INICIO) / (60*60*24) ))
+negido@cpg3:~$ echo $DIAS
+327
+```
+Ahora ya podemos añadir este criterio a la orden `find`: `find . -name "*.json" -mtime 327`.
+Pero no devuelve ningún resultado.
+Al ser un único archivo, podemos consultar la fecha de su última modificación accediendo al directorio donde se halla y ejecutar `date --reference=ARCHIVO`(orden encontrada en `man date`).
+
+```
+negido@cpg3:~/.local/share/jupyter/runtime$ date --reference=nbserver-144266.json 
+mar 28 sep 2021 12:44:49 CEST
+```
+Comprobamos que la orden que hemos utilizado antes para buscar el archivo añadiendo la información sobre la fecha de última modificación funciona, ejecutando esta vez `find . -name "*.json" -mtime 25`
+
+![find date](https://user-images.githubusercontent.com/92091175/138554875-bb6cc766-b0db-4491-95b3-a9ceece6ca9e.png)
 
 ## Ejercicio 3
 Descarga, empleando la orden oportuna, todos los ficheros [de esta URL](ftp://ftp.ensembl.org/pub/release-102/gtf/accipiter_nisus/). 
