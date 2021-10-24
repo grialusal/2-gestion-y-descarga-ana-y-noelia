@@ -29,7 +29,7 @@ En el directorio **pruebas-1** crearemos un enlace duro con la orden `ln`:
 
 `ln gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf pruebas-1/`
 
-Con el comando `ls -li` podemos ver que se ha creado el enlace y que el inodo es el mismo que el fichero original. Además, se puede apreciar cómo el número que se encuentra después de los permisos ha cambiado a 2.
+Con el comando `ls -li` podemos ver que se ha creado el enlace y que el inodo es el mismo que el fichero original. Además, se puede apreciar cómo el número de enlaces de referencia al archivo ha cambiado a 2.
 ![enlace duro](https://user-images.githubusercontent.com/92113066/138568836-1fbcbdba-83ef-4384-9141-be8338c1aede.png)
 
 
@@ -42,7 +42,7 @@ Ejecutamos `ls -li` para comprobar que se ha creado correctamente y que el inodo
 ![enlaces](https://user-images.githubusercontent.com/92091175/138259422-39cf14bb-1b13-4d35-bb3f-8beb71b11b97.png)
 
 _**1.**_ Para borrar el archivo original utilizamos la orden `rm gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf`. A continuación, accedemos a los directorios prueba con los enlaces creados.
-Comprobamos así que, en la carpeta **pruebas-1** donde estaba el enlace duro, este sigue apareciendo. El inodo no ha cambiado a 1 pero el número que aparece detras de los permisos ya no es 2 sino 1. Comprobamos con `nano Drosophila_melanogaster.BDGP6.28.102.gtf` que se puede acceder igualmente al archivo.
+Comprobamos así que, en la carpeta **pruebas-1** donde estaba el enlace duro, este sigue apareciendo. El inodo no ha cambiado pero el número de enlaces de referencia al archivo no es 2 sino 1. Comprobamos con `nano Drosophila_melanogaster.BDGP6.28.102.gtf` que se puede acceder igualmente al archivo.
 
 
 ![acceso enlace duro](https://user-images.githubusercontent.com/92091175/138285851-fe69cb81-4993-49b7-99b3-d749e6d7402e.png)
@@ -53,7 +53,7 @@ No ocurre así con el enlace blando del directorio **pruebas-2**, pues guarda la
 
 ![nuevo archivo nano](https://user-images.githubusercontent.com/92091175/138286753-908b9d64-2bfe-4460-83a0-db87f0f79636.png)
 
-_**2.**_ En el caso del enlace duro cuando vamos a la carpeta **gtfscopy** y ejecutamos el comando `ls -li` se observa como el fichero Drosophila_melanogaster.BDGP6.28.102.gtf tiene un numero 2 luego de los permisos. Si eliminamos el fichero de destino del enlace con la orden `rm pruebas-1/Drosophila_melanogaster.BDGP6.28.102.gtf` y ejecutamos el comando `ls -li` podemos ver como ese numero ahora es 1. Ademas al ejecutar `nano` tambien es posible acceder al fichero. 
+_**2.**_ En el caso del enlace duro, cuando vamos a la carpeta **gtfscopy** y ejecutamos el comando `ls -li` se observa como el fichero Drosophila_melanogaster.BDGP6.28.102.gtf presenta 2 enlaces de referencia. Si eliminamos el fichero de destino del enlace con la orden `rm pruebas-1/Drosophila_melanogaster.BDGP6.28.102.gtf` y ejecutamos el comando `ls -li` podemos ver como ese numero ahora es 1. Además, al ejecutar `nano` es posible acceder al fichero. 
 
 ![enlace duro 2](https://user-images.githubusercontent.com/92113066/138570675-374dd682-2b2f-4658-8d59-bc3104c414f3.png)
 
