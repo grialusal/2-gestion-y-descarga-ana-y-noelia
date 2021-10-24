@@ -151,10 +151,11 @@ Generamos los checksums empleando el mismo algoritmo para asegurarnos de la inte
 
 Creamos un fichero SHA-1 para los ficheros .gz empleando la orden `shasum ./*.gz > gz_checksums.sha` y lo nombramos *gz_checksums*. Con el comando `cat gz_checksums.sha` podemos observar los checksums almacenados en el fichero *gz_checksums*.
 
-
 ![sha](https://user-images.githubusercontent.com/92113066/138591004-ed0e4b9a-946c-45fc-8c2b-04dc64aca4bf.png)
 
+Finalmente, comprobamos los checksums con `-c`:
 
+![comprobacion checksums](https://user-images.githubusercontent.com/92091175/138592913-6ad472c5-1406-49b1-9a39-a341ae5ce50c.png)
 
 
 
