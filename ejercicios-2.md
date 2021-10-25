@@ -66,8 +66,10 @@ _**3.**_ Si se edita el fichero original, por ejemplo, con el editor `nano`, al 
 
 ![modificacion origen enlace duro](https://user-images.githubusercontent.com/92091175/138308707-8bce6b58-ebbb-44e0-874a-434e3ef7b3e0.png)
 
+Al modificar el archivo de destino, en caso del enlace duro, tambien se modifica el fichero de origen.
 
-Al modificar el archivo de destino, en caso del enlace duro, tambien se modifica el fichero de origen. 
+Si, por el contrario, accedemos al enlace blando habiendo previamente modificado el archivo original, este va a seguir mostrando la misma ruta, pues no se ha cambiado la ubicación del archivo. Si hubiéramos movido el fichero original, el enlace blando seguiría indicando la misma ruta, por lo que dejaría de ser válido.
+El enlace blando, al no ser un fichero *per se*, siempre va a conservar la misma ruta, salvo que forcemos su modificación o creemos uno nuevo en otro directorio.
 
 _**4.**_ Al copiar el enlace duro con la orden `cp Drosophila_melanogaster.BDGP6.28.102.gtf Drosophila.copia.enlace.duro.gtf` y ejecutar `ls` nos aparece que la copia que hemos hecho tiene un inodo distinto a la original:
 
