@@ -99,11 +99,7 @@ Consultamos en `man find` cómo añadir a la orden principal los criterios de b�
               of file modification times.
 ```
 
-Tenemos entonces que calcular `n`, esto es, el número de días que han pasado desde el 30 de noviembre de 2020 hasta hoy. 
-
-***Se me ocurren dos formas:
--La rápida: Buscar en Google 'days since 30 nov 2020'
--La no-tan-rápida: definiendo variables (procedimiento consultado [aquí](https://www.linuxito.com/gnu-linux/nivel-basico/928-como-restar-fechas-en-bash))***
+Tenemos entonces que calcular `n`, esto es, el número de días que han pasado desde el 30 de noviembre de 2020 hasta hoy. Una de las formas de hacerlo es definiendo variables (procedimiento consultado [aquí](https://www.linuxito.com/gnu-linux/nivel-basico/928-como-restar-fechas-en-bash)). Nombramos la fecha actual como `FECHA_FIN` y el 30 de noviembre de 2020 será `FECHA_INICIO` Con `+%s` le estamos dando instrucciones para pasar la fecha al número de segundos transcurridos desde el 1 de enero de 1970, para así restar la fecha final menos la de inicio. La cantidad resultante se divide entre 60 * 60 * 24 para transformar los segundos en días.
 
 ```
 negido@cpg3:~$ FECHA_FIN=$(date +%s)
