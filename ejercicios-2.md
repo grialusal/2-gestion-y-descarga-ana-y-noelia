@@ -53,7 +53,7 @@ No ocurre así con el enlace blando del directorio **pruebas-2**, pues guarda la
 
 ![nuevo archivo nano](https://user-images.githubusercontent.com/92091175/138286753-908b9d64-2bfe-4460-83a0-db87f0f79636.png)
 
-_**2.**_ En el caso del enlace duro cuando vamos a la carpeta **gtfscopy** y ejecutamos el comando `ls -li` se observa como el fichero Drosophila_melanogaster.BDGP6.28.102.gtf tiene 2 enlaces de referencia. Si eliminamos el fichero de destino del enlace con la orden `rm pruebas-1/Drosophila_melanogaster.BDGP6.28.102.gtf` y ejecutamos el comando `ls -li` podemos ver como ese numero ahora es 1. Ademas al ejecutar `nano` tambien es posible acceder al fichero. 
+_**2.**_ En el caso del enlace duro cuando vamos a la carpeta **gtfscopy** y ejecutamos el comando `ls -li` se observa como el fichero Drosophila_melanogaster.BDGP6.28.102.gtf tiene 2 enlaces de referencia. Si eliminamos el fichero de destino del enlace con la orden `rm pruebas-1/Drosophila_melanogaster.BDGP6.28.102.gtf` y ejecutamos el comando `ls -li` podemos ver como ese número ahora es 1. Además, al ejecutar `nano` también es posible acceder al fichero. 
 
 ![enlace duro 2](https://user-images.githubusercontent.com/92113066/138570675-374dd682-2b2f-4658-8d59-bc3104c414f3.png)
 
@@ -66,7 +66,7 @@ _**3.**_ Si se edita el fichero original, por ejemplo, con el editor `nano`, al 
 
 ![modificacion origen enlace duro](https://user-images.githubusercontent.com/92091175/138308707-8bce6b58-ebbb-44e0-874a-434e3ef7b3e0.png)
 
-Al modificar el archivo de destino, en caso del enlace duro, tambien se modifica el fichero de origen.
+Al modificar el archivo de destino, en caso del enlace duro, también se modifica el fichero de origen.
 
 Si, por el contrario, accedemos al enlace blando habiendo previamente modificado el archivo original, este va a seguir mostrando la misma ruta, pues no se ha cambiado la ubicación del archivo. Si hubiéramos movido el fichero original, el enlace blando seguiría indicando la misma ruta, por lo que dejaría de ser válido.
 El enlace blando, al no ser un fichero *per se*, siempre va a conservar la misma ruta, salvo que forcemos su modificación o creemos uno nuevo en otro directorio.
