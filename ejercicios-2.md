@@ -82,13 +82,14 @@ Sin embargo, al intentar llevar a cabo la misma acción con nuestro enlace bland
 
 
 ## Ejercicio 2
-Usa la documentación de `find` para encontrar todos los notebook Jupyter con fecha de última modificación 30 de Noviembre de 2020 que haya en tu directorio HOME. Excluye todos aquellos que se encuentren dentro de directorios ocultos (aquellos que comienzan por un punto `.`). 
+
+Usa la documentación de `find` para encontrar las opciones que permiten encontrar todos los notebook Jupyter (ficheros con extension ipynb) con fecha de última modificación 17 de Noviembre de 2020 que haya en el directorio /home/alejandro. Excluye todos aquellos que se encuentren dentro de directorios ocultos (aquellos que comienzan por un punto .).
 
 ### Respuesta ejercicio 2
 
-Los ficheros de notebook Jupyter tienen la extensión .json, por lo que podemos utilizar esa información como punto de partida para buscar en nuestro directorio los archivos deseados. Para ello, utilizamos la orden `find . -name "*.json"`. Nos devuelve un solo archivo:
+Los ficheros de notebook Jupyter tienen la extensión .ipynb, por lo que podemos utilizar esa información como punto de partida para buscar en el directorio correspondiente los archivos deseados. Para ello, utilizamos la orden `find . -name "*.ipynb"`. 
 
-![find json](https://user-images.githubusercontent.com/92091175/138553224-476a6df0-5ff1-4420-9e57-75808190fce2.png)
+![find ipynb](https://user-images.githubusercontent.com/92091175/138910635-0289b949-a546-465f-b949-0860629cfb08.png)
 
 Consultamos en `man find` cómo añadir a la orden principal los criterios de búsqueda por fecha de última modificación, así como el criterio de exclusión de directorios ocultos, y encontramos la siguiente entrada:
 ```
@@ -99,28 +100,25 @@ Consultamos en `man find` cómo añadir a la orden principal los criterios de b�
               of file modification times.
 ```
 
-Tenemos entonces que calcular `n`, esto es, el número de días que han pasado desde el 30 de noviembre de 2020 hasta hoy. Una de las formas de hacerlo es definiendo variables (procedimiento consultado [aquí](https://www.linuxito.com/gnu-linux/nivel-basico/928-como-restar-fechas-en-bash)). Nombramos la fecha actual como `FECHA_FIN` y el 30 de noviembre de 2020 será `FECHA_INICIO` Con `+%s` le estamos dando instrucciones para pasar la fecha al número de segundos transcurridos desde el 1 de enero de 1970, para así restar la fecha final menos la de inicio. La cantidad resultante se divide entre 60 * 60 * 24 para transformar los segundos en días.
+Tenemos entonces que calcular `n`, esto es, el número de días que han pasado desde el 17 de noviembre de 2020 hasta hoy. Una de las formas de hacerlo es definiendo variables (procedimiento consultado [aquí](https://www.linuxito.com/gnu-linux/nivel-basico/928-como-restar-fechas-en-bash)). Nombramos la fecha actual como `FECHA_FIN` y el 17 de noviembre de 2020 será `FECHA_INICIO` Con `+%s` le estamos dando instrucciones para pasar la fecha al número de segundos transcurridos desde el 1 de enero de 1970, para así restar la fecha final menos la de inicio. La cantidad resultante se divide entre 60 * 60 * 24 para transformar los segundos en días.
 
 ```
 negido@cpg3:~$ FECHA_FIN=$(date +%s)
-negido@cpg3:~$ FECHA_INICIO=$(date --date="2020-11-30" +%s)
+negido@cpg3:~$ FECHA_INICIO=$(date --date="2020-11-17" +%s)
 negido@cpg3:~$ DIAS=$(( ($FECHA_FIN - $FECHA_INICIO) / (60*60*24) ))
 negido@cpg3:~$ echo $DIAS
-327
+343
 ```
-Ahora ya podemos añadir este criterio a la orden `find`: `find . -name "*.json" -mtime 327`.
-Pero no devuelve ningún resultado.
-Al ser un único archivo, podemos consultar la fecha de su última modificación accediendo al directorio donde se halla y ejecutar `date --reference=ARCHIVO`(orden encontrada en `man date`).
+Ahora ya podemos añadir este criterio a la orden `find`: `find . -name "*.ipynb" -mtime 343`.
+Nos devuelve un archivo:
 
-```
-negido@cpg3:~/.local/share/jupyter/runtime$ date --reference=nbserver-144266.json 
-mar 28 sep 2021 12:44:49 CEST
-```
-Comprobamos que la orden que hemos utilizado antes para buscar el archivo añadiendo la información sobre la fecha de última modificación funciona, ejecutando esta vez `find . -name "*.json" -mtime 25`
+![archivo ipynb](https://user-images.githubusercontent.com/92091175/138912394-ade8e403-3d6a-443a-8cfb-8d9bf57d9c71.png)
 
-![find date](https://user-images.githubusercontent.com/92091175/138554875-bb6cc766-b0db-4491-95b3-a9ceece6ca9e.png)
 
-Por último, añadimos el criterio de exclusión de ficheros ocultos mediante `-not -path '*/\.*'`.Con esta orden le decimos a la shell que no incluya ficheros que tengan en su ruta `/.`. Nos quedaría algo así: `find . -not -path '*/\.*' -name "*.json" -mtime 25`. No obstante, como todos los directorios donde se alojan nuestros archivos .json están ocultos, esta orden no nos devuelve ningún fichero.
+Por último, añadimos el criterio de exclusión de ficheros ocultos mediante `-not -path '*/\.*'`.Con esta orden le decimos a la shell que no incluya ficheros que tengan en su ruta `/.`. Nos quedaría algo así: `find . -not -path '*/\.*' -name "*.ipynb" -mtime 343`.
+
+![excluir ficheros ocultos](https://user-images.githubusercontent.com/92091175/138913090-7f46de68-826f-4f61-8db0-2599b63fa288.png)
+
 
 ## Ejercicio 3
 Descarga, empleando la orden oportuna, todos los ficheros [de esta URL](ftp://ftp.ensembl.org/pub/release-102/gtf/accipiter_nisus/). 
