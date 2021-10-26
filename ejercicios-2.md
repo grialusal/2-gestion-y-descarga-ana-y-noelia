@@ -120,6 +120,8 @@ Comprobamos que la orden que hemos utilizado antes para buscar el archivo añadi
 
 ![find date](https://user-images.githubusercontent.com/92091175/138554875-bb6cc766-b0db-4491-95b3-a9ceece6ca9e.png)
 
+Por último, añadimos el criterio de exclusión de ficheros ocultos mediante `-not -path '*/\.*'`.Con esta orden le decimos a la shell que no incluya ficheros que tengan en su ruta `/.`. Nos quedaría algo así: `find . -not -path '*/\.*' -name "*.json" -mtime 25`. No obstante, como todos los directorios donde se alojan nuestros archivos .json están ocultos, esta orden no nos devuelve ningún fichero.
+
 ## Ejercicio 3
 Descarga, empleando la orden oportuna, todos los ficheros [de esta URL](ftp://ftp.ensembl.org/pub/release-102/gtf/accipiter_nisus/). 
 - Inspecciona el fichero CHECKSUMS y genera los checksums adecuados para asegurarte de que los datos son íntegros. 
