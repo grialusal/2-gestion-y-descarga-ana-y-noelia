@@ -35,11 +35,11 @@ Con el comando `ls -li` podemos ver que se ha creado el enlace y que el inodo es
 
 Ahora creamos un enlace blando en el directorio **pruebas-2**, con la orden `ln -s`:
 
-`ln -s gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf pruebas-2/`
+`ln -s ../gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf .`
 
 Ejecutamos `ls -li` para comprobar que se ha creado correctamente y que el inodo es distinto del fichero original al que nos redirige.
 
-![enlaces](https://user-images.githubusercontent.com/92091175/138259422-39cf14bb-1b13-4d35-bb3f-8beb71b11b97.png)
+![enlance blando4](https://user-images.githubusercontent.com/92113066/139146379-8bdcbb7b-dcd3-4c75-99b3-1cf496907c1c.png)
 
 _**1.**_ Para borrar el archivo original utilizamos la orden `rm gtfscopy/Drosophila_melanogaster.BDGP6.28.102.gtf`. A continuación, accedemos a los directorios prueba con los enlaces creados.
 Comprobamos así que, en la carpeta **pruebas-1** donde estaba el enlace duro, este sigue apareciendo. El inodo no ha cambiado pero el número de enlaces de referencia ya no es 2 sino 1. Comprobamos con `nano Drosophila_melanogaster.BDGP6.28.102.gtf` que se puede acceder igualmente al archivo.
@@ -68,17 +68,16 @@ _**3.**_ Si se edita el fichero original, por ejemplo, con el editor `nano`, al 
 
 Al modificar el archivo de destino, en caso del enlace duro, también se modifica el fichero de origen.
 
-Si, por el contrario, accedemos al enlace blando habiendo previamente modificado el archivo original, este va a seguir mostrando la misma ruta, pues no se ha cambiado la ubicación del archivo. Si hubiéramos movido el fichero original, el enlace blando seguiría indicando la misma ruta, por lo que dejaría de ser válido.
+Si accedemos al enlace blando habiendo previamente modificado el archivo original, este va a seguir mostrando la misma ruta, pues no se ha cambiado la ubicación del archivo. Al ejecutar el fichero con `nano` se observa que tambien presenta las modificaciones que le hemos hecho al fichero original. Si hubiéramos movido el fichero original, el enlace blando seguiría indicando la misma ruta, por lo que dejaría de ser válido.
 El enlace blando, al no ser un fichero *per se*, siempre va a conservar la misma ruta, salvo que forcemos su modificación o creemos uno nuevo en otro directorio.
 
 _**4.**_ Al copiar el enlace duro con la orden `cp Drosophila_melanogaster.BDGP6.28.102.gtf Drosophila.copia.enlace.duro.gtf` y ejecutar `ls` nos aparece que la copia que hemos hecho tiene un inodo distinto a la original:
 
 ![Copia enlace duro](https://user-images.githubusercontent.com/92091175/138264052-b989af1f-3412-4e45-b533-c9675e463e87.png)
 
-Sin embargo, al intentar llevar a cabo la misma acción con nuestro enlace blando, nos aparece un error:
+Cuando copiamos el enlace blando con la orden cp Drosophila_melanogaster.BDGP6.28.102.gtf Drosophila.copia.enlace.blando.gtf`y observar los ficheros con el comando `ls -li` podemos ver que se copia el fichero enlazado que tiene un inodo diferente al original y no es un enlace.
 
-![error copia enlace blando](https://user-images.githubusercontent.com/92091175/138264633-8cf163f2-5e49-4076-a73b-2b80e9252f17.png)
-
+![enlace blando5](https://user-images.githubusercontent.com/92113066/139148805-6acaa62d-3430-45a2-aba5-fca2d3afda9f.png)
 
 
 ## Ejercicio 2
