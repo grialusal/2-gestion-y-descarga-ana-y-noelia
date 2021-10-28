@@ -47,9 +47,10 @@ Comprobamos así que, en la carpeta **pruebas-1** donde estaba el enlace duro, e
 
 ![acceso enlace duro](https://user-images.githubusercontent.com/92091175/138285851-fe69cb81-4993-49b7-99b3-d749e6d7402e.png)
 
-No ocurre así con el enlace blando del directorio **pruebas-2**, pues guarda la dirección original, a la cual no se puede acceder, y si se comprueba con `nano`, genera un archivo vacío.
+No ocurre así con el enlace blando, pues guarda la dirección original, a la cual no se puede acceder, y si se comprueba con `nano`, genera un archivo vacío.
 
-![direccion enlace blando](https://user-images.githubusercontent.com/92091175/138286968-41fc59e7-bd40-405d-a733-0d123683904d.png)
+![enlace blando del original borrado](https://user-images.githubusercontent.com/92091175/139207055-3d45db5b-216b-4e1d-a8c4-366784390881.png)
+
 
 ![nuevo archivo nano](https://user-images.githubusercontent.com/92091175/138286753-908b9d64-2bfe-4460-83a0-db87f0f79636.png)
 
@@ -75,7 +76,7 @@ _**4.**_ Al copiar el enlace duro con la orden `cp Drosophila_melanogaster.BDGP6
 
 ![Copia enlace duro](https://user-images.githubusercontent.com/92091175/138264052-b989af1f-3412-4e45-b533-c9675e463e87.png)
 
-Cuando copiamos el enlace blando con la orden cp Drosophila_melanogaster.BDGP6.28.102.gtf Drosophila.copia.enlace.blando.gtf`y observar los ficheros con el comando `ls -li` podemos ver que se copia el fichero enlazado que tiene un inodo diferente al original y no es un enlace.
+Cuando copiamos el enlace blando con la orden `cp Drosophila_melanogaster.BDGP6.28.102.gtf Drosophila.copia.enlace.blando.gtf`y observar los ficheros con el comando `ls -li` podemos ver que se copia el fichero enlazado que tiene un inodo diferente al original y no es un enlace.
 
 ![enlace blando5](https://user-images.githubusercontent.com/92113066/139148805-6acaa62d-3430-45a2-aba5-fca2d3afda9f.png)
 
