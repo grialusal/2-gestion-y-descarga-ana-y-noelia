@@ -91,7 +91,7 @@ Los ficheros de notebook Jupyter tienen la extensión .ipynb, por lo que podemos
 
 ![find ipynb](https://user-images.githubusercontent.com/92091175/138910635-0289b949-a546-465f-b949-0860629cfb08.png)
 
-Consultamos en `man find` cómo añadir a la orden principal los criterios de búsqueda por fecha de última modificación, así como el criterio de exclusión de directorios ocultos, y encontramos la siguiente entrada:
+~~Consultamos en `man find` cómo añadir a la orden principal los criterios de búsqueda por fecha de última modificación, así como el criterio de exclusión de directorios ocultos, y encontramos la siguiente entrada:~~ 
 ```
        -mtime n
               File's  data was last modified less than, more than or
@@ -100,7 +100,7 @@ Consultamos en `man find` cómo añadir a la orden principal los criterios de b�
               of file modification times.
 ```
 
-Tenemos entonces que calcular `n`, esto es, el número de días que han pasado desde el 17 de noviembre de 2020 hasta hoy. Una de las formas de hacerlo es definiendo variables (procedimiento consultado [aquí](https://www.linuxito.com/gnu-linux/nivel-basico/928-como-restar-fechas-en-bash)). Nombramos la fecha actual como `FECHA_FIN` y el 17 de noviembre de 2020 será `FECHA_INICIO` Con `+%s` le estamos dando instrucciones para pasar la fecha al número de segundos transcurridos desde el 1 de enero de 1970, para así restar la fecha final menos la de inicio. La cantidad resultante se divide entre 60 * 60 * 24 para transformar los segundos en días.
+~~Tenemos entonces que calcular `n`, esto es, el número de días que han pasado desde el 17 de noviembre de 2020 hasta hoy. Una de las formas de hacerlo es definiendo variables (procedimiento consultado [aquí](https://www.linuxito.com/gnu-linux/nivel-basico/928-como-restar-fechas-en-bash)). Nombramos la fecha actual como `FECHA_FIN` y el 17 de noviembre de 2020 será `FECHA_INICIO` Con `+%s` le estamos dando instrucciones para pasar la fecha al número de segundos transcurridos desde el 1 de enero de 1970, para así restar la fecha final menos la de inicio. La cantidad resultante se divide entre 60 * 60 * 24 para transformar los segundos en días.~~
 
 ```
 negido@cpg3:~$ FECHA_FIN=$(date +%s)
@@ -109,15 +109,27 @@ negido@cpg3:~$ DIAS=$(( ($FECHA_FIN - $FECHA_INICIO) / (60*60*24) ))
 negido@cpg3:~$ echo $DIAS
 343
 ```
-Ahora ya podemos añadir este criterio a la orden `find`: `find . -name "*.ipynb" -mtime 343`.
-Nos devuelve un archivo:
+~~Ahora ya podemos añadir este criterio a la orden `find`: `find . -name "*.ipynb" -mtime 343`.
+Nos devuelve un archivo:~~
 
 ![archivo ipynb](https://user-images.githubusercontent.com/92091175/138912394-ade8e403-3d6a-443a-8cfb-8d9bf57d9c71.png)
 
 
-Por último, añadimos el criterio de exclusión de ficheros ocultos mediante `-not -path '*/\.*'`.Con esta orden le decimos a la shell que no incluya ficheros que tengan en su ruta `/.`. Nos quedaría algo así: `find . -not -path '*/\.*' -name "*.ipynb" -mtime 343`.
+~~Por último, añadimos el criterio de exclusión de ficheros ocultos mediante `-not -path '*/\.*'`.Con esta orden le decimos a la shell que no incluya ficheros que tengan en su ruta `/.`. Nos quedaría algo así: `find . -not -path '*/\.*' -name "*.ipynb" -mtime 343`.~~
 
-![excluir ficheros ocultos](https://user-images.githubusercontent.com/92091175/138913090-7f46de68-826f-4f61-8db0-2599b63fa288.png)
+![excluir ficheros ocultos](https://user-images.githubusercontent.com/92091175/138913090-7f46de68-826f-4f61-8db0-2599b63fa288.png) 
+
+
+Consultamos el manual de `find` y buscamos el comando que nos permita introducir la fecha de modificación del archivo que nos interesa, en este caso, 17 de noviembre de 2020. 
+
+![find newermt](https://user-images.githubusercontent.com/92091175/139240213-56665503-29d1-4b42-a2f7-40e3c41ddb6c.png)
+
+Añadimos también el criterio de exclusión de archivos ocultos mediante `-not -path '*/\.*'`.Con esta orden le decimos a la shell que no incluya ficheros que tengan en su ruta `/.`. Quedaría algo así:
+
+`find . -not -path '*/\.*' -name "*.ipynb" -newermt "20201117"`
+
+![find](https://user-images.githubusercontent.com/92091175/139240718-c0953297-9ada-4d87-8b63-a1b0faff6c10.png)
+
 
 
 ## Ejercicio 3
