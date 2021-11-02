@@ -80,6 +80,8 @@ Cuando copiamos el enlace blando con la orden `cp Drosophila_melanogaster.BDGP6.
 
 ![enlace blando5](https://user-images.githubusercontent.com/92113066/139148805-6acaa62d-3430-45a2-aba5-fca2d3afda9f.png)
 
+### Comentario: Todo correcto, muy bien :)
+### Nota: 3.3/10
 
 ## Ejercicio 2
 
@@ -130,7 +132,8 @@ Añadimos también el criterio de exclusión de archivos ocultos mediante `-not 
 
 ![find](https://user-images.githubusercontent.com/92091175/139240718-c0953297-9ada-4d87-8b63-a1b0faff6c10.png)
 
-
+### Comentario: Todo correcto, muy bien :)
+### Nota: 3.3/10
 
 ## Ejercicio 3
 Descarga, empleando la orden oportuna, todos los ficheros [de esta URL](ftp://ftp.ensembl.org/pub/release-102/gtf/accipiter_nisus/). 
@@ -169,7 +172,8 @@ Finalmente, comprobamos los checksums con `-c`:
 
 
 
-
+### Comentario: Simplemente os faltó añadir en el comando `wget -r ftp://ftp.ensembl.org/pub/release-102/gtf/accipiter_nisus/` las opciones `--no-parent` para que no descarge todo lo que hay en directorios que están por encima en el árbol de directorios y `--no-directories` para que no os descargue los datos con la misma estructura de directorios y os descargue simplemente los archivos, por lo demás todo correcto, muy bien :)
+### Nota: 3.2/10
 
 
 
